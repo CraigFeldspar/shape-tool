@@ -1,0 +1,57 @@
+stages:
+    - test
+    - build
+    - deploy
+
+obsidian_test:
+    type: test
+    image: node:6
+    before_script:
+        - npm install
+    except:
+        - release
+    script:
+        - npm test
+
+obsidian_caas_build:
+    type: build
+    image: registry.wanadev.org/infra/caas/compose
+    only:
+        - master
+    except:
+        - release
+        - /^v?[0-9]+\.[0-9]+\.[0-9]+(-[a-z0-9]+)?$/
+    script:
+        - caas-compose build
+
+obsidian_caas_deploy:
+    type: deploy
+    image: registry.wanadev.org/infra/caas/compose
+    only:
+        - master
+    except:
+        - release
+        - /^v?[0-9]+\.[0-9]+\.[0-9]+(-[a-z0-9]+)?$/
+    script:
+        - caas-compose deploy
+
+jast_release:
+    type: build
+    image: node:6
+    only:
+        - /^v?[0-9]+\.[0-9]+\.[0-9]+(-[a-z0-9]+)?$/
+    before_script:
+        - yarn || npm install
+        - npm install -g git+ssh://git@git.wanadev.org:infra/jast.git
+    script:
+        - jast release
+
+jast_deploy:
+    type: deploy
+    image: node:6
+    only:
+        - release
+    before_script:
+        - npm install -g git+ssh://git@git.wanadev.org:infra/jast.git
+    script:
+        - jast deploy
