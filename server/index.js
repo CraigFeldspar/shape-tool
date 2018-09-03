@@ -1,15 +1,13 @@
-const path = require("path");
 const express = require("express");
 
-const APP_DIR = process.env.APP_DIR || path.resolve(__dirname, "../build/release/app");
-const TARGET = process.env.TARGET || "dev";
-const PORT = process.env.PORT || 3000;
+const NODE_ENV = process.env.NODE_ENV || "production";
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 
-if (TARGET === "dev") {
-    app.use("/", express.static(APP_DIR));
+if (NODE_ENV === "dev") {
+    require("./webpack")(app);
 }
 
-console.log(`Starting Obsidian static server on 0.0.0.0:${PORT} [${TARGET}]`);
+console.log(`Starting Obsidian static server on 0.0.0.0:${PORT} [${NODE_ENV}]`);
 app.listen(PORT);

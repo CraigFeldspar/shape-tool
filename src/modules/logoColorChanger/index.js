@@ -1,10 +1,10 @@
-import Controller from "./src/controller";
-
 export default {
     name: "logo-color-changer",
     requires: ["logo"],
-    load({ modules }) {
-        return new Controller({ modules });
+    load() {
+        const LogoColorChangerController = require("./src/logoColorChangerController").default;
+
+        return new LogoColorChangerController();
     },
     unload() {},
 };

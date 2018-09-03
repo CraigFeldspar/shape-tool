@@ -1,12 +1,12 @@
-import Controller from "./src/controller";
-
 import "./style/index.less";
 
 export default {
     name: "logo",
     requires: [],
     load() {
-        return new Controller();
+        const LogoController = require("./src/logoController").default;
+
+        return new LogoController();
     },
     unload() {},
 };
