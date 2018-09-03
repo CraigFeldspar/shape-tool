@@ -7,6 +7,8 @@ const app = express();
 
 if (NODE_ENV === "dev") {
     require("./webpack")(app);
+} else if (NODE_ENV === "caas") {
+    require("./caas")(app);
 }
 
 console.log(`Starting Obsidian static server on 0.0.0.0:${PORT} [${NODE_ENV}]`);
