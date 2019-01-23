@@ -6,7 +6,7 @@ ENV PORT 8080
 COPY ./ /data
 RUN cd /data \
     && npm install \
-    && npm run build
+    && OBSIDIAN_APP_URL="__caas" npm run build
 
 WORKDIR /data
 CMD ["npm", "start"]

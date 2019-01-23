@@ -4,7 +4,9 @@ import "./index.css";
 
 const app = obsidianApp({
     htmlNode: "#integration",
-    appUrl: process.env.OBSIDIAN_APP_URL,
+    appUrl: process.env.OBSIDIAN_APP_URL === "__caas"
+        ? window.location.href.replace(/(https?:\/\/)([a-z0-9]*)/, "$1$2-app")
+        : process.env.OBSIDIAN_APP_URL,
 });
 
 
