@@ -28,4 +28,9 @@ module.exports = merge(common, {
         }),
         new HardSourceWebpackPlugin(),
     ],
+    resolve: {
+        alias: {
+            vue$: "vue/dist/vue.esm.js",
+        },
+    },
 });

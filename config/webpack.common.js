@@ -3,6 +3,7 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
 const ROOT_DIR = path.resolve(__dirname, "../");
 
@@ -41,6 +42,10 @@ module.exports = {
                     },
                 ],
             },
+            {
+                test: /\.vue$/,
+                loader: "vue-loader",
+            },
         ],
     },
     plugins: [
@@ -62,5 +67,6 @@ module.exports = {
             sourceMap: true,
             chunksSortMode: "dependency",
         }),
+        new VueLoaderPlugin(),
     ],
 };

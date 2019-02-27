@@ -3,14 +3,10 @@ import self from "../index";
 export default class CanvasController {
 
     constructor() {
-        this.buildHtml();
-        document.body.appendChild(this.html);
     }
 
     buildHtml() {
-        this.html = document.createElement("div");
-        this.html.className = "canvas-container";
-
+        this.html = document.getElementById("canvas-container");
         this.canvas = document.createElement("canvas");
         this.canvas.className = "canvas-2d";
         this.ctx = this.canvas.getContext("2d");

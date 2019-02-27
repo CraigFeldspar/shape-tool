@@ -2,11 +2,16 @@
 
 export default {
     name: "drawing",
-    requires: ["canvas"],
+    requires: ["canvas", "vue"],
     load() {
         const DrawingController = require("./src/drawingController").default;
 
-        return new DrawingController();
+        this.drawingController = new DrawingController();
+        this.app.modules.canvas.requestRedraw();
+
+        // this.app.modules.vue.$refs["drawing"].$data.drawShape = this.drawingController.startDrawing;
+        this.app.modules.vue.$refs["drawing"].startDrawing = (id) => this.drawingController.startDrawing(id);
+        return this.drawingController;
     },
     unload() {},
 };
