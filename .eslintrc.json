@@ -8,6 +8,8 @@
     "commonjs": true
   },
   "rules": {
+    "class-methods-use-this": 0,
+    "linebreak-style": 0,
     "quotes": ["error", "double"],
     "indent": ["error", 4],
     "padded-blocks": [

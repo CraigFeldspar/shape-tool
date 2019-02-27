@@ -1,35 +1,9 @@
-# Notice :
+# Shape tool
+This is a tool for automatically generating basic geometrical 2D primitives (circles, squares, rectangles, ellipsis, etc) in different visual styles.
+This shapes are output as a JPEG file and JSON file describing the shapes.
 
-This is a fork of https://github.com/wanadev/obsidianjs-starter adding Wanadev
-specific (private) configuration for deployment & caas.
+This tool is used for generating endless data for machine learning algorithms to learn to identify these primitives.
+Noise can also be added to harden the task of detection.
 
-Please do not submit merge requests or open issues here if not linked to Wanadev
-infrastructure.
-
-Upstream repository url: `git@github.com:wanadev/obsidianjs-starter.git`
-
----
-
-## Useful links :
-
-* [Automatic deployment of an Obsdian app with Google Cloud (App Engine) and JAST](https://git.wanadev.org/obsidian/starter/wikis/D%C3%A9ploiement-Google-Cloud)
-
----
-
-# obsidian starter
-
-## Usage
-
-### Development
-
-```
-npm run dev
-```
-open http://localhost:8080
-
-### Build
-
-```
-npm run release
-npm run start
-```
+## JSON format specification
+**TODO**

@@ -1,14 +1,17 @@
 import "@babel/polyfill";
 import obsidian from "@obsidianjs/obsidian";
 
-import logoModule from "./modules/logo";
-import logoColorChangerModule from "./modules/logoColorChanger";
+import canvas from "./modules/canvas";
+import drawing from "./modules/drawing";
 
 import "./style/index.less";
 
 const app = obsidian("starter-app");
 
-app.use(logoModule);
-app.use(logoColorChangerModule);
+app.use(canvas);
+app.use(drawing);
 
 app.start();
+
+// Debug
+window.app = app;
