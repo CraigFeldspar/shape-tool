@@ -1,0 +1,15 @@
+import Vector from "../math/vector";
+
+export default class Rectangle {
+    constructor() {
+        this.tl = new Vector(0, 0);
+        this.br = new Vector(0, 0);
+    }
+
+    serialize() {
+        return {
+            shape: "rect",
+            vertices: [this.tl.x, this.tl.y, this.br.x, this.br.y]
+        }
+    }
+}

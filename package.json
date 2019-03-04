@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node server",
-    "dev": "cross-env NODE_ENV=dev node server",
+    "dev": "cross-env NODE_ENV=dev node --inspect server",
     "release": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.release.js && cp -r server build/release && cp package.json build/release",
     "lint": "eslint src config server jast.js",
     "lint-fix": "eslint src config server jast.js --fix",
@@ -31,6 +31,7 @@
     "@babel/preset-env": "^7.2.0",
     "@obsidianjs/obsidian": "^0.1.2",
     "autoprefixer": "^9.1.2",
+    "axios": "^0.18.0",
     "babel-loader": "^8.0.4",
     "clean-webpack-plugin": "^1.0.0",
     "compression-webpack-plugin": "^2.0.0",
@@ -64,6 +65,7 @@
   },
   "dependencies": {
     "express": "^4.16.3",
+    "express-fileupload": "^1.1.1-alpha.3",
     "vue": "^2.6.7"
   }
 }

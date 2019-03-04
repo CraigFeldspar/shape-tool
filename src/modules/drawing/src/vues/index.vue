@@ -3,6 +3,7 @@
 		<ShapeButton v-bind:onClick="drawRectangle" v-bind:text="'Rectangle'"/>
 		<ShapeButton v-bind:onClick="drawCircle" v-bind:text="'Circle'" />
 		<ShapeButton v-bind:onClick="drawLine" v-bind:text="'Line'" />
+		<ShapeButton v-bind:onClick="stopDrawing" v-bind:text="'DONE'" />
 	</div>
 </template>
 <script>
@@ -23,7 +24,8 @@
 	export default {
 		data: function() {
 			return {
-				startDrawing: () => {}
+				startDrawing: () => {},
+				stopDrawing: () => {},
 			}
 		},
 		methods: {

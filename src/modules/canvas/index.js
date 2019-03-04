@@ -9,6 +9,12 @@ export default {
         cc.buildHtml();
         cc.resizeCanvas();
 
+        function loop() {
+            requestAnimationFrame(loop);
+            cc.draw();
+        }
+        requestAnimationFrame(loop);
+
         return new Promise((resolve) => {
             setTimeout(() => {
                 resolve(cc);
