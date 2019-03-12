@@ -10,6 +10,13 @@ export default class Vector {
     	return this;
     }
 
+    subtractToNew(v) {
+        let r = new Vector();
+        r.x = this.x - v.x;
+        r.y = this.y - v.y;
+        return r;
+    }
+    
     static Min(v0, v1) {
     	return new Vector(Math.min(v0.x, v1.x), Math.min(v0.y, v1.y));
     }

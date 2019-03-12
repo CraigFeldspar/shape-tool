@@ -16,4 +16,8 @@ export default class Rectangle {
     getArea() {
         return (this.br.y - this.tl.y) * (this.br.x - this.tl.x);
     }
+
+    getCenter() {
+        return new Vector((this.br.x + this.tl.x) / 2, (this.br.y + this.tl.y) / 2);
+    }
 }

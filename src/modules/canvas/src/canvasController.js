@@ -19,7 +19,7 @@ export default class CanvasController {
         this.canvas.addEventListener("mousemove", (e) => this.onMouseMove(e));
         this._isDragging = false;
 
-        this.setBorder(50);
+        this.setSize();
     }
 
     onMouseDown(e) {
@@ -55,15 +55,16 @@ export default class CanvasController {
     }
 
     resizeCanvas() {
-        this.canvas.width = this.canvas.clientWidth;
-        this.canvas.height = this.canvas.clientHeight;
-        this.draw();
+        // Do not resize since we used fixed size images as inputs to NN
+        return;
     }
 
-    setBorder(size = 5) {
-        this.html.style.border = `${size}px solid teal`;
-        this.html.style.width = `calc(100% - ${2 * size}px)`;
-        this.html.style.height = `calc(100% - ${2 * size}px)`;
+    setSize() {
+        this.html.style.border = "auto solid teal";
+        this.html.style.width = "1000px";
+        this.html.style.height = "500px";
+        this.canvas.width = this.canvas.clientWidth;
+        this.canvas.height = this.canvas.clientHeight;
     }
 
     export() {

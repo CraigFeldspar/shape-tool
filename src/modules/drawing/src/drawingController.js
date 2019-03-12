@@ -1,6 +1,7 @@
 import self from "../index";
 import Rectangle from "./shapes/rectangle";
 import Vector from "./math/vector";
+import GridController from "./grid/gridController";
 
 export default class DrawingController {
     constructor() {
@@ -20,6 +21,7 @@ export default class DrawingController {
         this.shapes = [];
         this.currentShape = null;
         this._origin = null;
+        this.gridController = new GridController(self.app.modules.canvas.canvas.width, self.app.modules.canvas.canvas.height, 10, 5);
     }
 
     onDragStart(event) {
@@ -98,6 +100,10 @@ export default class DrawingController {
                 this.drawRectangle(this.shapes[i], ctx);
             }
         }
+
+        if (this.debug) {
+            this.gridController.drawDebug(ctx);
+        }
     }
 
     drawRectangle(rect, ctx) {
@@ -118,14 +124,17 @@ export default class DrawingController {
     }
 
     export() {
-        let shapes = []
-        for (let i = 0; i < this.shapes.length; i++) {
-            if (this.shapes[i].getArea() > 0) {
-                shapes.push(this.shapes[i].serialize());
-            }
-        }
+        this.gridController.fillFromRectangles(this.shapes);
 
-        return shapes;
+        console.log(this.gridController.cells);
+        // let shapes = []
+        // for (let i = 0; i < this.shapes.length; i++) {
+        //     if (this.shapes[i].getArea() > 0) {
+        //         shapes.push(this.shapes[i].serialize());
+        //     }
+        // }
+
+        // return shapes;
     }
 
 }
