@@ -1,9 +1,9 @@
 import self from "../index";
 import axios from "axios";
 
-export default class DrawingController {
+export default class ExporterController {
     constructor() {
-
+        self.app.events.on("@drawing.save", () => this.saveToDisk());
     }
 
     saveToDisk(){
@@ -12,7 +12,7 @@ export default class DrawingController {
 
     	let options = {
     	    image: img,
-    	    data: data
+    	    data: JSON.stringify(data)
     	};
 
     	// Send to server

@@ -3,35 +3,37 @@
 		<ShapeButton v-bind:onClick="drawRectangle" v-bind:text="'Rectangle'"/>
 		<ShapeButton v-bind:onClick="drawCircle" v-bind:text="'Circle'" />
 		<ShapeButton v-bind:onClick="drawLine" v-bind:text="'Line'" />
-		<ShapeButton v-bind:onClick="stopDrawing" v-bind:text="'DONE'" />
+		<ShapeButton v-bind:onClick="clear" v-bind:text="'CLEAR'" />
+		<ShapeButton v-bind:onClick="save" v-bind:text="'SAVE'" />
 	</div>
 </template>
 <script>
 	import ShapeButton from "./shape-button.vue";
 
 	let drawRectangle = function() {
-		this.startDrawing(0);
-	};
-
-	let drawCircle = function() {
 		this.startDrawing(1);
 	};
 
-	let drawLine = function() {
+	let drawCircle = function() {
 		this.startDrawing(2);
+	};
+
+	let drawLine = function() {
+		this.startDrawing(3);
 	};
 
 	export default {
 		data: function() {
 			return {
 				startDrawing: () => {},
-				stopDrawing: () => {},
+				clear: () => {},
+				save: () => {},
 			}
 		},
 		methods: {
 			drawRectangle,
 			drawCircle,
-			drawLine
+			drawLine,
 		},
 		components: {
 			ShapeButton

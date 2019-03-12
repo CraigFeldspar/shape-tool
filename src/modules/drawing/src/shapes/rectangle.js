@@ -12,4 +12,8 @@ export default class Rectangle {
             vertices: [this.tl.x, this.tl.y, this.br.x, this.br.y]
         }
     }
+
+    getArea() {
+        return (this.br.y - this.tl.y) * (this.br.x - this.tl.x);
+    }
 }

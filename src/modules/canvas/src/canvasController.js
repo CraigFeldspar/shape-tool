@@ -40,6 +40,10 @@ export default class CanvasController {
         }
     }
 
+    setCursor(cursor) {
+        this.canvas.style.cursor = cursor;
+    }
+
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         self.app.events.emit("draw", this.ctx);

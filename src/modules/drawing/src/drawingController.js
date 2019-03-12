@@ -14,8 +14,8 @@ export default class DrawingController {
         this.IDLE = 0;
         this.DRAWING = 1;
 
-        this.RECTANGLE = 0;
-        this.CIRCLE = 1;
+        this.RECTANGLE = 1;
+        this.CIRCLE = 2;
 
         this.shapes = [];
         this.currentShape = null;
@@ -48,7 +48,19 @@ export default class DrawingController {
     }
 
     onDragEnd(event) {
+        let shapeType = null;
+
+        if (this.currentShape instanceof Rectangle) {
+            shapeType = this.RECTANGLE;
+        } else if (false) {
+            shapeType = this.CIRCLE;
+        }
+
         this.stopDrawing();
+
+        if (shapeType) {
+            this.startDrawing(shapeType);
+        }
     }
 
     startDrawing(id) {
@@ -66,7 +78,7 @@ export default class DrawingController {
         this.shapes.push(this.currentShape);
 
         console.log(`Drawing ${id}`);
-        // self.app.modules.canvas.setCursor("pointer");
+        self.app.modules.canvas.setCursor("crosshair");
     }
 
     stopDrawing() {
@@ -77,7 +89,7 @@ export default class DrawingController {
         }
         
         this.currentShape = null;
-        // self.app.modules.canvas.setCursor("default");
+        self.app.modules.canvas.setCursor("pointer");
     }
 
     draw(ctx) {
@@ -95,6 +107,11 @@ export default class DrawingController {
         ctx.fill();
     }
 
+    clear() {
+        this.shapes.length = 0;
+        this.stopDrawing();
+    }
+
     buildHtml() {
         // PASS
         // document.body.appendChild(this.html);
@@ -103,7 +120,9 @@ export default class DrawingController {
     export() {
         let shapes = []
         for (let i = 0; i < this.shapes.length; i++) {
-            shapes.push(this.shapes[i].serialize());
+            if (this.shapes[i].getArea() > 0) {
+                shapes.push(this.shapes[i].serialize());
+            }
         }
 
         return shapes;
